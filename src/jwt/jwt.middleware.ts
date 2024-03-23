@@ -1,13 +1,13 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction } from 'express';
 import { JwtService } from './jwt.service';
-import { UsersService } from 'src/users/users.service';
+import { UserService } from 'src/users/users.service';
 
 @Injectable()
 export class JwtMiddleware implements NestMiddleware {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly userService: UsersService,
+    private readonly userService: UserService,
   ) {}
   async use(req: Request, res: Response, next: NextFunction) {
     // 토큰이 잘못되어서 decoded값이 망가져도 서버가 안멈추게 try/catch 보기싫어도 한번 씌워놓음
